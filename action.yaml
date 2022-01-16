@@ -1,0 +1,13 @@
+name: 'Checks that version of branch is different than base'
+author: '@HenrikJoreteg'
+description: 'Enforces a version bump in the package.json'
+inputs:
+  token:
+    description: 'Pass in secrets.GITHUB_TOKEN'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
+branding:
+  icon: 'check-square'
+  color: 'orange'
