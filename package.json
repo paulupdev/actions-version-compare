@@ -2,9 +2,9 @@
   "name": "version-compare",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "ncc build ./index.js -o dist"
+    "build": "ncc build ./src/index.js -o ."
   },
   "keywords": [],
   "author": "",
