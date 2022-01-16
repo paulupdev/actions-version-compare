@@ -12821,11 +12821,17 @@ const run = async () => {
       return
     }
 
-    const mainVersion = (
-      await fetch(
-        `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=GHSAT0AAAAAABKWJI6V2GQB4ZTA6ET7FGJCYPMX2TQ`
-      ).then(res => res.json())
-    ).version
+    const token = core.getInput('token')
+    const headers = {}
+    if (token) {
+      core.info('Using specified token')
+      headers.Authorization = `token ${token}`
+    }
+
+    const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=${token}`
+
+    const mainVersion = await fetch(url).then(res => res.json())
+    console.log(mainVersion)
 
     // const mainVersion = await execute(
     //   'git',
