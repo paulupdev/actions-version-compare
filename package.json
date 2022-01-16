@@ -2,9 +2,9 @@
   "name": "version-compare",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build ./index.js -o dist --source-map --license licenses.txt"
+    "build": "ncc build ./index.js -o dist"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 7351:
@@ -18483,7 +18483,7 @@ module.exports = JSON.parse('{"name":"yallist","version":"4.0.0","description":"
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"version-compare","version":"1.0.0","description":"","main":"index.js","scripts":{"build":"ncc build ./index.js -o dist --source-map --license licenses.txt"},"keywords":[],"author":"","license":"ISC","dependencies":{"@actions/core":"1.6.0","@actions/github":"5.0.0","@vercel/ncc":"0.33.1","node-fetch":"3.1.0","semver":"7.3.5"},"prettier":{"semi":false,"singleQuote":true,"jsxSingleQuote":true,"arrowParens":"avoid","jsdocParser":true}}');
+module.exports = JSON.parse('{"name":"version-compare","version":"1.0.0","description":"","main":"dist/index.js","scripts":{"build":"ncc build ./index.js -o dist"},"keywords":[],"author":"","license":"ISC","dependencies":{"@actions/core":"1.6.0","@actions/github":"5.0.0","@vercel/ncc":"0.33.1","node-fetch":"3.1.0","semver":"7.3.5"},"prettier":{"semi":false,"singleQuote":true,"jsxSingleQuote":true,"arrowParens":"avoid","jsdocParser":true}}');
 
 /***/ })
 
@@ -18714,4 +18714,3 @@ try {
 module.exports = __webpack_exports__;
 /******/ })()
 ;
-//# sourceMappingURL=index.js.map
