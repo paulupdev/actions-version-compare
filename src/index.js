@@ -15,8 +15,9 @@ const run = async () => {
     if (token) {
       headers.Authorization = `token ${token}`
     }
+    const baseBranchName = core.getInput('base-branch-name') || 'main'
 
-    const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=${token}`
+    const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/${baseBranchName}/package.json?token=${token}`
     const mainVersion = (await fetch(url, { headers }).then(res => res.json()))
       .version
 
