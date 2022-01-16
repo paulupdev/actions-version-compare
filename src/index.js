@@ -1,23 +1,7 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
-const exec = require('@actions/exec')
 const fetch = require('node-fetch')
 const semver = require('semver')
-
-const execute = async (command, flags, cb) => {
-  let result = ''
-  const options = {}
-  options.listeners = {
-    stdout: data => {
-      result += data.toString()
-    },
-  }
-
-  await exec.exec(command, flags, options)
-  return cb(result)
-}
-
-const getVersion = res => JSON.parse(res).version
 
 const run = async () => {
   try {
@@ -36,7 +20,8 @@ const run = async () => {
     console.log(token)
 
     const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=${token}`
-    const mainVersion = await fetch(url, { headers }).then(res => res.json())
+    const mainVersion = (await fetch(url, { headers }).then(res => res.json()))
+      .version
     console.log(mainVersion)
 
     // const mainVersion = await execute(
@@ -50,7 +35,7 @@ const run = async () => {
     if (!semver.valid(localVersion)) {
       core.setFailed(`Current version '${localVersion}' is invalid`)
     }
-    if (!semver.gt(localVersion, version)) {
+    if (!semver.gt(localVersion, mainVersion)) {
       core.setFailed(
         `Version '${localVersion}' is not greater than '${mainVersion}'`
       )
