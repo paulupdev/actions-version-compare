@@ -12796,6 +12796,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186)
 const github = __nccwpck_require__(5438)
 const exec = __nccwpck_require__(1514)
+const fetch = __nccwpck_require__(467)
 const semver = __nccwpck_require__(1383)
 
 const execute = async (command, flags, cb) => {
@@ -12820,11 +12821,17 @@ const run = async () => {
       return
     }
 
-    const mainVersion = await execute(
-      'git',
-      ['show', `origin/main:package.json`],
-      getVersion
-    )
+    const mainVersion = (
+      await fetch(
+        `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=GHSAT0AAAAAABKWJI6V2GQB4ZTA6ET7FGJCYPMX2TQ`
+      ).then(res => res.json())
+    ).version
+
+    // const mainVersion = await execute(
+    //   'git',
+    //   ['show', `origin/main:package.json`],
+    //   getVersion
+    // )
     const localVersion =
       require(`${process.env.GITHUB_WORKSPACE}/package.json`).version
 
