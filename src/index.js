@@ -33,9 +33,10 @@ const run = async () => {
       headers.Authorization = `token ${token}`
     }
 
-    const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=${token}`
+    console.log(token)
 
-    const mainVersion = await fetch(url).then(res => res.json())
+    const url = `https://raw.githubusercontent.com/${github.context.repo.owner}/${github.context.repo.repo}/main/package.json?token=${token}`
+    const mainVersion = await fetch(url, { headers }).then(res => res.json())
     console.log(mainVersion)
 
     // const mainVersion = await execute(
