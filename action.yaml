@@ -1,5 +1,5 @@
 name: 'Checks that version of branch is different than base'
-author: '@HenrikJoreteg'
+author: '@Author'
 description: 'Enforces a version is  bump in the package.json'
 inputs:
   token:

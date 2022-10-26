@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: henrikjoreteg/version-compare@main
+      - uses: /version-compare@main
         with:
           # token only required if private repo
           token: ${{ secrets.GITHUB_TOKEN }}
